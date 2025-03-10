@@ -13,24 +13,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>320</y>
-     <width>89</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>70</y>
+     <x>730</x>
+     <y>20</y>
      <width>43</width>
      <height>47</height>
     </rect>
@@ -53,6 +40,476 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QLineEdit" name="input_area">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>608</width>
+     <height>105</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>608</width>
+     <height>105</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>608</width>
+     <height>105</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>40</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+	border-image: url(:/pictures/keyboard/input_area.png);
+	color:black;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="logo_keyboard">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>156</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>156</width>
+     <height>41</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>156</width>
+     <height>41</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pictures/keyboard/logo_keyboard.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tips">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
+     <width>270</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>270</width>
+     <height>21</height>
+    </size>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>270</width>
+     <height>21</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/pictures/keyboard/tips.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>210</y>
+     <width>611</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="seven7">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/7.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/7_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="eight8">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/8.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/8_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="nine9">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/9.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/9_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="zero0">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/0.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/0_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="four4">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/4.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/4_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="five5">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/5.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/5_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="six6">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/6.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/6_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="ok">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/ok.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/ok_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="one1">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/1.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/1_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="two2">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/2.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/2_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="three3">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/3.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/3_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="clear">
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>66</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/pictures/keyboard/clear.png);
+}
+QPushButton:pressed{
+	border-image: url(:/pictures/keyboard/clear_deep.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

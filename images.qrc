@@ -14,5 +14,32 @@
         <file>main interface/rotation.png</file>
         <file>main interface/Input_box.png</file>
         <file>keyboard/back.png</file>
+        <file>keyboard/0.png</file>
+        <file>keyboard/0_deep.png</file>
+        <file>keyboard/1.png</file>
+        <file>keyboard/2.png</file>
+        <file>keyboard/3.png</file>
+        <file>keyboard/3_deep.png</file>
+        <file>keyboard/4.png</file>
+        <file>keyboard/5.png</file>
+        <file>keyboard/5_deep.png</file>
+        <file>keyboard/6.png</file>
+        <file>keyboard/6_deep.png</file>
+        <file>keyboard/7.png</file>
+        <file>keyboard/7_deep.png</file>
+        <file>keyboard/8.png</file>
+        <file>keyboard/8_deep.png</file>
+        <file>keyboard/9.png</file>
+        <file>keyboard/9_deep.png</file>
+        <file>keyboard/clear.png</file>
+        <file>keyboard/clear_deep.png</file>
+        <file>keyboard/input_area.png</file>
+        <file>keyboard/logo_keyboard.png</file>
+        <file>keyboard/ok.png</file>
+        <file>keyboard/ok_deep.png</file>
+        <file>keyboard/tips.png</file>
+        <file>keyboard/1_deep.png</file>
+        <file>keyboard/2_deep.png</file>
+        <file>keyboard/4_deep.png</file>
     </qresource>
 </RCC>
