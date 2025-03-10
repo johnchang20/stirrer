@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/pictures">
+        <file>main interface/logo.png</file>
+        <file>main interface/group1.png</file>
+        <file>main interface/group2.png</file>
+        <file>main interface/group3.png</file>
+        <file>main interface/group_bg.png</file>
+        <file>main interface/group_rpm.png</file>
+        <file>main interface/MINI.png</file>
+        <file>main interface/start.png</file>
+        <file>main interface/start_deep.png</file>
+        <file>main interface/stop.png</file>
+        <file>main interface/stop_deep.png</file>
+        <file>main interface/rotation.png</file>
+        <file>main interface/Input_box.png</file>
+        <file>keyboard/back.png</file>
+    </qresource>
+</RCC>
