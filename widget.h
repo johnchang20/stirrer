@@ -23,6 +23,7 @@ protected:
 private slots:
     void openNewWindow();
 
+
 private:
     Ui::Widget *ui;
 };

@@ -35,10 +35,18 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pictures/main interface/start_deep.png);</string>
+    <string notr="true">QPushButton{
+	border-image: url(:/pictures/main interface/start_deep.png);
+}
+QPushButton:checked{
+	border-image: url(:/pictures/main interface/start.png);
+}</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="stop">
@@ -63,10 +71,19 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/pictures/main interface/stop_deep.png);</string>
+    <string notr="true">QPushButton{
+	border-image: url(:/pictures/main interface/stop_deep.png);
+}
+QPushButton:checked{
+	border-image: url(:/pictures/main interface/stop.png);
+}
+</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="logo">
@@ -404,6 +421,9 @@
    <property name="text">
     <string>120</string>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="input2">
    <property name="geometry">
@@ -440,6 +460,9 @@
    <property name="text">
     <string>60</string>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="input3">
    <property name="geometry">
@@ -475,6 +498,9 @@
    </property>
    <property name="text">
     <string>40</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
