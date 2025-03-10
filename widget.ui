@@ -369,7 +369,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="ClickableLineEdit" name="input1">
+  <widget class="QLineEdit" name="input1">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -384,11 +384,16 @@
      <height>51</height>
     </size>
    </property>
-   <property name="maximumSize">
+   <property name="sizeIncrement">
     <size>
      <width>142</width>
      <height>51</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLineEdit{
@@ -397,14 +402,14 @@
 }</string>
    </property>
    <property name="text">
-    <string>3213</string>
+    <string>120</string>
    </property>
   </widget>
-  <widget class="ClickableLineEdit" name="input2">
+  <widget class="QLineEdit" name="input2">
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>190</y>
+     <y>180</y>
      <width>142</width>
      <height>51</height>
     </rect>
@@ -415,23 +420,31 @@
      <height>51</height>
     </size>
    </property>
-   <property name="maximumSize">
+   <property name="sizeIncrement">
     <size>
      <width>142</width>
      <height>51</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLineEdit{
 	qproperty-alignment:AlignCenter;
 	border-image: url(:/pictures/main interface/Input_box.png);
 }</string>
+   </property>
+   <property name="text">
+    <string>60</string>
    </property>
   </widget>
-  <widget class="ClickableLineEdit" name="input3">
+  <widget class="QLineEdit" name="input3">
    <property name="geometry">
     <rect>
-     <x>590</x>
+     <x>600</x>
      <y>190</y>
      <width>142</width>
      <height>51</height>
@@ -443,27 +456,28 @@
      <height>51</height>
     </size>
    </property>
-   <property name="maximumSize">
+   <property name="sizeIncrement">
     <size>
      <width>142</width>
      <height>51</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLineEdit{
 	qproperty-alignment:AlignCenter;
 	border-image: url(:/pictures/main interface/Input_box.png);
 }</string>
+   </property>
+   <property name="text">
+    <string>40</string>
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>ClickableLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">clickablelineedit.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
