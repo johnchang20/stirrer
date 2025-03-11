@@ -3,10 +3,13 @@
 
 #include <QWidget>
 #include <QObject>
+#include "warning.h"
 
 namespace Ui {
 class digitButton;
 }
+
+class warning;
 
 class digitButton : public QWidget
 {
@@ -36,6 +39,7 @@ signals:
 
 private:
     Ui::digitButton *ui;
+    void judge_value();
 };
 
 #endif // DIGITBUTTON_H

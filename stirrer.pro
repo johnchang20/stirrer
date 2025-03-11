@@ -18,14 +18,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     digitbutton.cpp \
     main.cpp \
+    warning.cpp \
     widget.cpp
 
 HEADERS += \
     digitbutton.h \
+    warning.h \
     widget.h
 
 FORMS += \
     digitbutton.ui \
+    warning.ui \
     widget.ui
 
 # Default rules for deployment.

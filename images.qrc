@@ -41,5 +41,6 @@
         <file>keyboard/1_deep.png</file>
         <file>keyboard/2_deep.png</file>
         <file>keyboard/4_deep.png</file>
+        <file>keyboard/warning.jpg</file>
     </qresource>
 </RCC>
