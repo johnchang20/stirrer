@@ -2,6 +2,7 @@
 #define DIGITBUTTON_H
 
 #include <QWidget>
+#include <QObject>
 
 namespace Ui {
 class digitButton;
@@ -30,6 +31,8 @@ private slots:
     void on_eight8_clicked();
     void on_nine9_clicked();
 
+signals:
+    void sendNumber(const QString &number);  // Signal to send data
 
 private:
     Ui::digitButton *ui;

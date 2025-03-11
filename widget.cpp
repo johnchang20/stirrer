@@ -6,6 +6,8 @@
 #include <QEvent>
 #include <QLineEdit>
 #include <QButtonGroup>
+#include <QDebug>
+
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -23,7 +25,6 @@ Widget::Widget(QWidget *parent)
     group->addButton(ui->stop);
     /*选择框加入按钮组以后会默认变成单选 */
     group->setExclusive(true);
-
 }
 
 Widget::~Widget()
@@ -34,24 +35,54 @@ Widget::~Widget()
 bool Widget::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == ui->input1 && event->type() == QEvent::MouseButtonPress) {
-        openNewWindow();
+        openNewWindow1();
         return true;
     }
     if (obj == ui->input2 && event->type() == QEvent::MouseButtonPress) {
-        openNewWindow();
+        openNewWindow2();
         return true;
     }
     if (obj == ui->input3 && event->type() == QEvent::MouseButtonPress) {
-        openNewWindow();
+        openNewWindow3();
         return true;
     }
     return QWidget::eventFilter(obj, event);
 }
 
-void Widget::openNewWindow()
+void Widget::openNewWindow1()
 {
     digitButton *newWindow = new digitButton();
     newWindow->show();
+    // Connect signal from WidgetA to slot in WidgetB
+    connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber1(const QString)));
+}
+
+void Widget::openNewWindow2()
+{
+    digitButton *newWindow = new digitButton();
+    newWindow->show();
+    // Connect signal from WidgetA to slot in WidgetB
+    connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber2(const QString)));
+}
+
+void Widget::openNewWindow3()
+{
+    digitButton *newWindow = new digitButton();
+    newWindow->show();
+    // Connect signal from WidgetA to slot in WidgetB
+    connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber3(const QString)));
+}
+
+void Widget::receiveNumber1(const QString &number) {
+    ui->input1->setText(number);  // Update QLineEdit with received number
+}
+
+void Widget::receiveNumber2(const QString &number) {
+    ui->input2->setText(number);  // Update QLineEdit with received number
+}
+
+void Widget::receiveNumber3(const QString &number) {
+    ui->input3->setText(number);  // Update QLineEdit with received number
 }
 
 

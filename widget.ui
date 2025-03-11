@@ -419,7 +419,7 @@ QPushButton:checked{
 }</string>
    </property>
    <property name="text">
-    <string>120</string>
+    <string>15</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -458,7 +458,7 @@ QPushButton:checked{
 }</string>
    </property>
    <property name="text">
-    <string>60</string>
+    <string>45</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -497,7 +497,7 @@ QPushButton:checked{
 }</string>
    </property>
    <property name="text">
-    <string>40</string>
+    <string>105</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
