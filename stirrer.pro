@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     digitbutton.cpp \
     main.cpp \
+    readEEPROM.cpp \
     warning.cpp \
     widget.cpp
 
 HEADERS += \
     digitbutton.h \
+    readEEPROM.h \
     warning.h \
     widget.h
 

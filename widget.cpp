@@ -7,7 +7,10 @@
 #include <QLineEdit>
 #include <QButtonGroup>
 #include <QDebug>
+#include <QString>
 #include <iostream>
+#include "readEEPROM.h"
+
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -25,6 +28,27 @@ Widget::Widget(QWidget *parent)
     group->addButton(ui->stop);
     /*选择框加入按钮组以后会默认变成单选 */
     group->setExclusive(true);
+
+    QString eepromData = readEEPROM("/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom");
+
+    /*get the rotation 1 ,2 ,3 information*/
+    QString subString1 = eepromData.mid(253, 3);
+    int tmp = subString1.toInt();
+    if(tmp < 100)
+        subString1.remove(0, 1);
+    ui->input1->setText(subString1);
+
+    QString subString2 = eepromData.mid(269, 3);
+    tmp = subString2.toInt();
+    if(tmp < 100)
+        subString2.remove(0, 1);
+    ui->input2->setText(subString2);
+
+    QString subString3 = eepromData.mid(285, 3);
+    tmp = subString3.toInt();
+    if(tmp < 100)
+        subString3.remove(0, 1);
+    ui->input3->setText(subString3);
 }
 
 Widget::~Widget()

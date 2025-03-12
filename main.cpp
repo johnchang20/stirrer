@@ -1,8 +1,8 @@
 #include "widget.h"
-
 #include <QApplication>
 #include <QObject>
 #include <QFontDatabase>
+
 
 int main(int argc, char *argv[])
 {
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
             QString fontFamily = fontFamilies.at(0);
             QFont font(fontFamily);
             a.setFont(font);
-    }
+    } 
 
     Widget w; //widget
     w.show();
