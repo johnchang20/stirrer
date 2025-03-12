@@ -32,6 +32,9 @@ public slots:
     void receiveNumber1(const QString &number);  // Slot to receive data
     void receiveNumber2(const QString &number);  // Slot to receive data
     void receiveNumber3(const QString &number);  // Slot to receive data
+    void saveAllRotations1();    // Slot to save all ratations
+    void saveAllRotations2();    // Slot to save all ratations
+    void saveAllRotations3();    // Slot to save all ratations
 
 private:
     Ui::Widget *ui;

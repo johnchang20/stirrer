@@ -7,7 +7,7 @@
 #include <QLineEdit>
 #include <QButtonGroup>
 #include <QDebug>
-
+#include <iostream>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -55,6 +55,7 @@ void Widget::openNewWindow1()
     newWindow->show();
     // Connect signal from WidgetA to slot in WidgetB
     connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber1(const QString)));
+    connect(newWindow, SIGNAL(saveParaments()) ,this, SLOT(saveAllRotations1()));
 }
 
 void Widget::openNewWindow2()
@@ -63,6 +64,7 @@ void Widget::openNewWindow2()
     newWindow->show();
     // Connect signal from WidgetA to slot in WidgetB
     connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber2(const QString)));
+    connect(newWindow, SIGNAL(saveParaments()) ,this, SLOT(saveAllRotations2()));
 }
 
 void Widget::openNewWindow3()
@@ -71,6 +73,7 @@ void Widget::openNewWindow3()
     newWindow->show();
     // Connect signal from WidgetA to slot in WidgetB
     connect(newWindow, SIGNAL(sendNumber(const QString)) ,this, SLOT(receiveNumber3(const QString)));
+    connect(newWindow, SIGNAL(saveParaments()) ,this, SLOT(saveAllRotations3()));
 }
 
 void Widget::receiveNumber1(const QString &number) {
@@ -85,5 +88,63 @@ void Widget::receiveNumber3(const QString &number) {
     ui->input3->setText(number);  // Update QLineEdit with received number
 }
 
+void Widget::saveAllRotations1()
+{
+    QString data = ui->input1->text();
+    /*add "0" at the head of string, as easy to understand with command hexdump -C eeprom*/
+    int tmp = data.toInt();
+    if(tmp < 100)
+        data.prepend("0");
 
+    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
+    QFile file(eepromPath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+       file.seek(253);
+       QTextStream out(&file);
+       out << data;
+       file.close();
+       std::cout << "Data written to EEPROM successfully!\n";
+    } else {
+       std::cerr << "Failed to write to EEPROM!\n";
+    }
+}
 
+void Widget::saveAllRotations2()
+{
+    QString data = ui->input2->text();
+    int tmp = data.toInt();
+    if(tmp < 100)
+        data.prepend("0");
+
+    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
+    QFile file(eepromPath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+       file.seek(269);
+       QTextStream out(&file);
+       out << data;
+       file.close();
+       std::cout << "Data written to EEPROM successfully!\n";
+    } else {
+       std::cerr << "Failed to write to EEPROM!\n";
+    }
+}
+
+void Widget::saveAllRotations3()
+{
+    QString data = ui->input3->text();
+    int tmp = data.toInt();
+    if(tmp < 100)
+        data.prepend("0");
+
+    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
+    QFile file(eepromPath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+       file.seek(285);
+       QTextStream out(&file);
+       out << data;
+       file.close();
+       std::cout << "Data written to EEPROM successfully!\n";
+    } else {
+       std::cerr << "Failed to write to EEPROM!\n";
+    }
+}

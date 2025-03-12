@@ -36,6 +36,7 @@ private slots:
 
 signals:
     void sendNumber(const QString &number);  // Signal to send data
+    void saveParaments();   // Signal to send data
 
 private:
     Ui::digitButton *ui;
