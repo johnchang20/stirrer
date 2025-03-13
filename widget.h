@@ -28,6 +28,8 @@ private slots:
     void openNewWindow2();
     void openNewWindow3();
 
+    void on_start_clicked();
+
 public slots:
     void receiveNumber1(const QString &number);  // Slot to receive data
     void receiveNumber2(const QString &number);  // Slot to receive data

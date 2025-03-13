@@ -19,12 +19,14 @@ SOURCES += \
     digitbutton.cpp \
     main.cpp \
     readEEPROM.cpp \
+    rmpToCLK.cpp \
     warning.cpp \
     widget.cpp
 
 HEADERS += \
     digitbutton.h \
     readEEPROM.h \
+    rpmToCLK.h \
     warning.h \
     widget.h
 

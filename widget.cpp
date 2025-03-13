@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "digitbutton.h"
+#include "rpmToCLK.h"
 
 #include <QMouseEvent>
 #include <QEvent>
@@ -49,6 +50,20 @@ Widget::Widget(QWidget *parent)
     if(tmp < 100)
         subString3.remove(0, 1);
     ui->input3->setText(subString3);
+
+
+
+//    system("echo 0 > /sys/class/pwm/pwmchip0/export");
+//    system("echo 5000 > /sys/class/pwm/pwmchip0/pwm0/period");
+//    system("echo 2000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle");
+//    system("echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable");
+
+//    std::string data = "1000000";
+//    std::string path = "/sys/class/pwm/pwmchip1/pwm0/period";
+//    std::string command = "echo " + data + " > " + path;
+//    system(command.c_str());
+
+
 }
 
 Widget::~Widget()
@@ -171,4 +186,15 @@ void Widget::saveAllRotations3()
     } else {
        std::cerr << "Failed to write to EEPROM!\n";
     }
+}
+
+void Widget::on_start_clicked()
+{
+    QString rotation1 = ui->input1->text();
+    QString rotation2 = ui->input2->text();
+    QString rotation3 = ui->input3->text();
+    int rpm1 = rotation1.toInt();
+    int rpm2 = rotation2.toInt();
+    int rpm3 = rotation3.toInt();
+    motor1_control(rpm1,rpm2,rpm3);
 }
