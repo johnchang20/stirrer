@@ -35,8 +35,8 @@ private slots:
     void on_nine9_clicked();
 
 signals:
-    void sendNumber(const QString &number);  // Signal to send data
-    void saveParaments();   // Signal to send data
+    void sendNumber(const QString &number);  // Signal to send data to main interface rotation display erea.
+    void saveParaments();   // Signal to send data, when clicked OK button, rotation argument will be save to eeprom.
 
 private:
     Ui::digitButton *ui;

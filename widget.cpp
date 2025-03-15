@@ -1,7 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "digitbutton.h"
-#include "rpmToCLK.h"
 
 #include <QMouseEvent>
 #include <QEvent>
@@ -10,8 +9,12 @@
 #include <QDebug>
 #include <QString>
 #include <iostream>
-#include "readEEPROM.h"
-
+#include <stdio.h>
+#include <QString>
+#include <string>
+#include <iostream>
+#include <QProcess>
+#include <QStringList>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -30,9 +33,18 @@ Widget::Widget(QWidget *parent)
     /*选择框加入按钮组以后会默认变成单选 */
     group->setExclusive(true);
 
-    QString eepromData = readEEPROM("/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom");
+    /* power on, read EEPROM date and show in the rotation area*/
+    QString eepromDataPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";
+    QFile file(eepromDataPath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Failed to open EEPROM file!";
+        return;
+    }
+    QTextStream in(&file);
+    QString eepromData = in.readAll(); //get all information from EEPROM
+    file.close();
 
-    /*get the rotation 1 ,2 ,3 information*/
+    /*get the rotation 1 ,2 ,3 information and show*/
     QString subString1 = eepromData.mid(253, 3);
     int tmp = subString1.toInt();
     if(tmp < 100)
@@ -50,20 +62,6 @@ Widget::Widget(QWidget *parent)
     if(tmp < 100)
         subString3.remove(0, 1);
     ui->input3->setText(subString3);
-
-
-
-//    system("echo 0 > /sys/class/pwm/pwmchip0/export");
-//    system("echo 5000 > /sys/class/pwm/pwmchip0/pwm0/period");
-//    system("echo 2000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle");
-//    system("echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable");
-
-//    std::string data = "1000000";
-//    std::string path = "/sys/class/pwm/pwmchip1/pwm0/period";
-//    std::string command = "echo " + data + " > " + path;
-//    system(command.c_str());
-
-
 }
 
 Widget::~Widget()
@@ -135,16 +133,16 @@ void Widget::saveAllRotations1()
     if(tmp < 100)
         data.prepend("0");
 
-    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
-    QFile file(eepromPath);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-       file.seek(253);
-       QTextStream out(&file);
-       out << data;
-       file.close();
-       std::cout << "Data written to EEPROM successfully!\n";
+    std::string Executable_Program_Path = "/root/app/writeeeprom";
+    std::string offset = "253";  //forbidden changing this value
+    std::string ratationRPM = data.toStdString();
+    std::string command = Executable_Program_Path + " " + offset + " " + ratationRPM ;
+    int ret = system(command.c_str());
+    // Check if the execution was successful
+    if (ret == -1) {
+        std::cerr << "Error: write rpm to eeprom failed!" << std::endl;
     } else {
-       std::cerr << "Failed to write to EEPROM!\n";
+        std::cout << "successful: write new rpm to eeprom completed!" << std::endl;
     }
 }
 
@@ -155,16 +153,16 @@ void Widget::saveAllRotations2()
     if(tmp < 100)
         data.prepend("0");
 
-    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
-    QFile file(eepromPath);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-       file.seek(269);
-       QTextStream out(&file);
-       out << data;
-       file.close();
-       std::cout << "Data written to EEPROM successfully!\n";
+    std::string Executable_Program_Path = "/root/app/writeeeprom";
+    std::string offset = "269";  //forbidden changing this value
+    std::string ratationRPM = data.toStdString();
+    std::string command = Executable_Program_Path + " " + offset + " " + ratationRPM ;
+    int ret = system(command.c_str());
+    // Check if the execution was successful
+    if (ret == -1) {
+        std::cerr << "Error: write rpm to eeprom failed!" << std::endl;
     } else {
-       std::cerr << "Failed to write to EEPROM!\n";
+        std::cout << "successful: write new rpm to eeprom completed!" << std::endl;
     }
 }
 
@@ -175,26 +173,38 @@ void Widget::saveAllRotations3()
     if(tmp < 100)
         data.prepend("0");
 
-    QString eepromPath = "/sys/class/i2c-dev/i2c-0/device/0-0052/eeprom";  // EEPROM file path
-    QFile file(eepromPath);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-       file.seek(285);
-       QTextStream out(&file);
-       out << data;
-       file.close();
-       std::cout << "Data written to EEPROM successfully!\n";
+    std::string Executable_Program_Path = "/root/app/writeeeprom";
+    std::string offset = "285";  //forbidden changing this value
+    std::string ratationRPM = data.toStdString();
+    std::string command = Executable_Program_Path + " " + offset + " " + ratationRPM ;
+    int ret = system(command.c_str());
+    // Check if the execution was successful
+    if (ret == -1) {
+        std::cerr << "Error: write rpm to eeprom failed!" << std::endl;
     } else {
-       std::cerr << "Failed to write to EEPROM!\n";
+        std::cout << "successful: write new rpm to eeprom completed!" << std::endl;
     }
 }
 
 void Widget::on_start_clicked()
 {
+    /*start motor rotate command format:
+    system("/root/app/set3pwm rpm1 rpm2 rpm3");*/
     QString rotation1 = ui->input1->text();
     QString rotation2 = ui->input2->text();
     QString rotation3 = ui->input3->text();
-    int rpm1 = rotation1.toInt();
-    int rpm2 = rotation2.toInt();
-    int rpm3 = rotation3.toInt();
-    motor1_control(rpm1,rpm2,rpm3);
+    std::string rpm1 = rotation1.toStdString();
+    std::string rpm2 = rotation2.toStdString();
+    std::string rpm3 = rotation3.toStdString();
+
+    std::string Executable_Program_Path = "/root/app/set3pwm";
+    std::string command = Executable_Program_Path + " " + rpm1 + " " + rpm2 + " " + rpm3;
+    int ret = system(command.c_str());
+    // Check if the execution was successful
+    if (ret == -1) {
+        std::cerr << "Error: set3pwm failed!" << std::endl;
+    } else {
+        std::cout << "Successful: set3pwm completed!" << std::endl;
+    }
 }
+

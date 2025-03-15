@@ -27,16 +27,15 @@ private slots:
     void openNewWindow1();
     void openNewWindow2();
     void openNewWindow3();
-
     void on_start_clicked();
 
 public slots:
     void receiveNumber1(const QString &number);  // Slot to receive data
     void receiveNumber2(const QString &number);  // Slot to receive data
     void receiveNumber3(const QString &number);  // Slot to receive data
-    void saveAllRotations1();    // Slot to save all ratations
-    void saveAllRotations2();    // Slot to save all ratations
-    void saveAllRotations3();    // Slot to save all ratations
+    void saveAllRotations1();    // Slot to save all ratations to eeprom
+    void saveAllRotations2();    // Slot to save all ratations to eeprom
+    void saveAllRotations3();    // Slot to save all ratations to eeprom
 
 private:
     Ui::Widget *ui;

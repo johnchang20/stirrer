@@ -21,7 +21,7 @@ void digitButton::on_back_clicked()
 void digitButton::on_ok_clicked()
 {
     emit sendNumber(ui->input_area->text());    // Emit signal with the text
-    emit saveParaments();   // Emit signal wsaveParaments
+    emit saveParaments();   // Emit signal saveParaments
     this->close();
 }
 

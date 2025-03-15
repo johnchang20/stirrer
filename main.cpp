@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
     QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
     if (!fontFamilies.isEmpty())
     {
-            QString fontFamily = fontFamilies.at(0);
-            QFont font(fontFamily);
-            a.setFont(font);
+        QString fontFamily = fontFamilies.at(0);
+        QFont font(fontFamily);
+        a.setFont(font);
     } 
 
     Widget w; //widget
