@@ -1,7 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "digitbutton.h"
-
+#include <QRegularExpression>
 #include <QMouseEvent>
 #include <QEvent>
 #include <QLineEdit>
@@ -30,7 +30,7 @@ Widget::Widget(QWidget *parent)
     QButtonGroup *group = new QButtonGroup(this);
     group->addButton(ui->start);
     group->addButton(ui->stop);
-    /*选择框加入按钮组以后会默认变成单选 */
+    /*选择框加入按钮组以后start, stop会默认变成单选 */
     group->setExclusive(true);
 
     /* power on, read EEPROM date and show in the rotation area*/
@@ -45,23 +45,26 @@ Widget::Widget(QWidget *parent)
     file.close();
 
     /*get the rotation 1 ,2 ,3 information and show*/
-    QString subString1 = eepromData.mid(253, 3);
-    int tmp = subString1.toInt();
-    if(tmp < 100)
-        subString1.remove(0, 1);
-    ui->input1->setText(subString1);
+    QString rotation1 = eepromData.mid(253, 3);
+    rotation1.remove(QRegularExpression("^0+"));
+    if (rotation1.isEmpty()) {
+        rotation1 = "0"; // Ensure at least one zero remains
+    }
+    ui->input1->setText(rotation1);
 
-    QString subString2 = eepromData.mid(269, 3);
-    tmp = subString2.toInt();
-    if(tmp < 100)
-        subString2.remove(0, 1);
-    ui->input2->setText(subString2);
+    QString rotation2 = eepromData.mid(269, 3);
+    rotation2.remove(QRegularExpression("^0+"));
+    if (rotation2.isEmpty()) {
+        rotation2 = "0"; // Ensure at least one zero remains
+    }
+    ui->input2->setText(rotation2);
 
-    QString subString3 = eepromData.mid(285, 3);
-    tmp = subString3.toInt();
-    if(tmp < 100)
-        subString3.remove(0, 1);
-    ui->input3->setText(subString3);
+    QString rotation3 = eepromData.mid(285, 3);
+    rotation3.remove(QRegularExpression("^0+"));
+    if (rotation3.isEmpty()) {
+        rotation3 = "0"; // Ensure at least one zero remains
+    }
+    ui->input3->setText(rotation3);
 }
 
 Widget::~Widget()
@@ -130,9 +133,12 @@ void Widget::saveAllRotations1()
     QString data = ui->input1->text();
     /*add "0" at the head of string, as easy to understand with command hexdump -C eeprom*/
     int tmp = data.toInt();
-    if(tmp < 100)
+    if(tmp < 10)
+        data.prepend("00");
+    else if((tmp >= 10 ) & (tmp < 100))
         data.prepend("0");
 
+    /***call function "writeeeprom"******/
     std::string Executable_Program_Path = "/root/app/writeeeprom";
     std::string offset = "253";  //forbidden changing this value
     std::string ratationRPM = data.toStdString();
@@ -150,9 +156,12 @@ void Widget::saveAllRotations2()
 {
     QString data = ui->input2->text();
     int tmp = data.toInt();
-    if(tmp < 100)
+    if(tmp < 10)
+        data.prepend("00");
+    else if((tmp >= 10 ) & (tmp < 100))
         data.prepend("0");
 
+    /***call function "writeeeprom"******/
     std::string Executable_Program_Path = "/root/app/writeeeprom";
     std::string offset = "269";  //forbidden changing this value
     std::string ratationRPM = data.toStdString();
@@ -170,9 +179,12 @@ void Widget::saveAllRotations3()
 {
     QString data = ui->input3->text();
     int tmp = data.toInt();
-    if(tmp < 100)
+    if(tmp < 10)
+        data.prepend("00");
+    else if((tmp >= 10 ) & (tmp < 100))
         data.prepend("0");
 
+    /***call function "writeeeprom"******/
     std::string Executable_Program_Path = "/root/app/writeeeprom";
     std::string offset = "285";  //forbidden changing this value
     std::string ratationRPM = data.toStdString();
@@ -204,7 +216,7 @@ void Widget::on_start_clicked()
     if (ret == -1) {
         std::cerr << "Error: set3pwm failed!" << std::endl;
     } else {
-        std::cout << "Successful: set3pwm completed!" << std::endl;
+        std::cout << "Successful: set3pwm completed!!!!" << std::endl;
     }
 }
 
